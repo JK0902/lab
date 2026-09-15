@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jiyeong Kim develops patient-centered AI from multimodal patient-reported signals to improve clinical decisions.">
+  <title>Jiyeong Kim, PhD | Patient-Centered AI</title>
+  <style>
+    :root {
+      --navy:#10263f; --blue:#1769aa; --sky:#eaf4fb; --cyan:#4aa7c8;
+      --ink:#18232d; --muted:#5e6b77; --line:#dbe3e9; --soft:#f5f8fa;
+      --white:#fff; --max:1180px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--white);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+    a{color:inherit} a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+    .skip{position:fixed;top:-5rem;left:1rem;z-index:100;background:var(--navy);color:#fff;padding:.7rem 1rem}.skip:focus{top:1rem}
+    .wrap{width:min(calc(100% - 2.5rem),var(--max));margin:auto}
+    header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+    nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+    .brand{text-decoration:none;font-weight:800;letter-spacing:-.02em}.brand small{display:block;color:var(--blue);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;margin-top:-.15rem}
+    .navlinks{display:flex;gap:1.5rem;align-items:center}.navlinks a{text-decoration:none;color:var(--muted);font-size:.88rem;font-weight:700}.navlinks a:hover{color:var(--blue)}
+    .navlinks .contact-link{border:1px solid var(--blue);color:var(--blue);padding:.55rem .85rem}
+    .menu{display:none;border:0;background:none;font:inherit;font-weight:700;color:var(--navy)}
+    section{scroll-margin-top:72px}.section{padding:6.5rem 0}
+    .label{color:var(--blue);font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin:0 0 .8rem}
+    h1,h2,h3{margin-top:0;color:var(--navy);line-height:1.08;letter-spacing:-.035em}h1{font-size:clamp(3rem,7vw,6.4rem);font-weight:700;margin-bottom:1.4rem}h2{font-size:clamp(2.1rem,4vw,3.9rem);font-weight:650;margin-bottom:1rem}h3{font-size:1.25rem}
+    .lead{font-size:1.1rem;color:var(--muted);max-width:720px}
+    .hero{min-height:calc(100vh - 72px);display:grid;align-items:center;position:relative;overflow:hidden;padding:5rem 0}
+    .hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(23,105,170,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(23,105,170,.05) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to right,transparent 5%,#000 48%,#000 100%)}
+    .hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center}
+    .hero h1{font-size:clamp(2.8rem,5.7vw,5.2rem);max-width:720px}.hero h1 span{color:var(--blue)}.hero-copy{font-size:1.18rem;color:var(--muted);max-width:650px}
+    .actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.05rem;text-decoration:none;font-weight:800;font-size:.88rem;border:1px solid var(--line);background:#fff}.btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}.btn:hover{transform:translateY(-1px)}
+    .signal-model{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(145deg,#fff 0%,#f7fbfe 100%);border:1px solid rgba(23,105,170,.2);box-shadow:0 28px 80px rgba(16,38,63,.14);padding:2.15rem;min-height:440px;display:flex;flex-direction:column;justify-content:center}
+    .signal-model:before{content:"";position:absolute;z-index:-1;width:230px;height:230px;border-radius:50%;right:-95px;top:-105px;background:radial-gradient(circle,rgba(47,183,210,.18),rgba(47,183,210,0) 69%)}.signal-model:after{content:"";position:absolute;z-index:-1;inset:0;background-image:linear-gradient(rgba(23,105,170,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(23,105,170,.035) 1px,transparent 1px);background-size:24px 24px;mask-image:linear-gradient(to bottom,transparent 5%,#000 46%,transparent 100%)}
+    .signal-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(23,105,170,.16);padding-bottom:1.15rem;margin-bottom:1.35rem}.signal-head b{color:var(--navy);font-size:1.05rem;letter-spacing:-.01em}.live{font:800 .68rem/1 monospace;letter-spacing:.08em;color:var(--blue)}.live:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 5px rgba(47,183,210,.12);margin-right:.55rem}
+    .signal-flow{position:relative;display:grid;gap:.72rem}.signal-flow:before{content:"";position:absolute;left:27px;top:48px;bottom:48px;width:2px;background:linear-gradient(var(--blue),var(--cyan))}.node{position:relative;display:grid;grid-template-columns:50px 1fr;gap:1rem;align-items:center;padding:1.18rem 1.25rem;background:rgba(255,255,255,.88);border:1px solid rgba(23,105,170,.14);box-shadow:0 8px 24px rgba(16,38,63,.06);transition:transform .2s ease,box-shadow .2s ease}.node:hover{transform:translateX(4px);box-shadow:0 12px 30px rgba(16,38,63,.1)}.node i{position:relative;z-index:1;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;font:700 .76rem/1 monospace;box-shadow:0 0 0 6px #fff}.node:nth-of-type(3) i{background:var(--blue)}.node:nth-of-type(5) i{background:var(--cyan)}.node b{display:block;color:var(--navy);font-size:1rem}.node span{display:block;color:var(--muted);font-size:.83rem;margin-top:.12rem}.flow-arrow{text-align:center;color:var(--cyan);font-size:1rem;line-height:.38;opacity:.85}
+    .identity-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--soft)}.identity{display:grid;grid-template-columns:repeat(4,1fr)}.identity div{padding:1.2rem;border-right:1px solid var(--line);color:var(--navy);font-size:.78rem;font-weight:800;text-align:center}.identity div:last-child{border-right:0}
+    .about-grid{display:grid;grid-template-columns:.55fr 1.45fr;gap:4rem}.about-intro{position:sticky;top:115px}.about-intro h2{font-size:clamp(2.15rem,3.45vw,3.4rem);max-width:410px}.big-statement{font-size:clamp(1.6rem,2.7vw,2.35rem);color:var(--navy);line-height:1.3;letter-spacing:-.025em;margin:0 0 2rem;max-width:830px}.bodycopy{color:var(--muted);font-size:1.06rem;max-width:850px}
+    .method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:3rem}.method{background:#fff;padding:1.9rem 1.6rem;min-height:180px;display:flex;flex-direction:column;justify-content:center}.method .num{font:700 .75rem monospace;color:var(--blue)}.method b{display:block;color:var(--navy);font-size:1.05rem;margin:.65rem 0}.method span{font-size:.9rem;color:var(--muted)}
+    .research{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .head-row{display:grid;grid-template-columns:1fr .8fr;gap:4rem;align-items:end;margin-bottom:3rem}.head-row .lead{font-size:1rem}
+    .research-list{border-top:2px solid var(--navy)}.research-item{display:grid;grid-template-columns:70px 1fr 180px;gap:2rem;padding:2rem 0;border-bottom:1px solid var(--line);align-items:start}.research-item .index{font:700 1rem monospace;color:var(--blue)}.research-item h3{margin-bottom:.55rem}.research-item p{margin:0;color:var(--muted);max-width:700px}.research-item .discipline{color:var(--blue);font:700 .7rem/1.5 monospace;text-transform:uppercase;text-align:right}
+    .publication-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:5rem}.pub-links{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.8rem}.pub-list{border-top:2px solid var(--navy)}.pub{padding:1.35rem 0;border-bottom:1px solid var(--line)}.pub small{color:var(--blue);font:700 .7rem monospace;text-transform:uppercase}.pub a{display:block;color:var(--navy);font-weight:750;text-decoration-thickness:1px;text-underline-offset:4px;margin:.3rem 0}.pub a:hover{color:var(--blue)}.pub p{margin:0;color:var(--muted);font-size:.86rem}
+    .join{background:var(--navy);color:#fff}.join h2{color:#fff}.join .label{color:#79c7df}.join .lead{color:#c9d6e1}.join-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:5rem}.opportunities{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.opportunity{border:1px solid rgba(255,255,255,.2);padding:1.5rem;background:rgba(255,255,255,.04)}.opportunity .op-num{font:700 .72rem monospace;color:#79c7df}.opportunity h3{color:#fff;margin:.7rem 0}.opportunity p{color:#c9d6e1;font-size:.9rem;margin:0}
+    .news-grid{display:grid;grid-template-columns:.65fr 1.35fr;gap:5rem}.news-list{border-top:2px solid var(--navy)}.news-item{display:grid;grid-template-columns:105px 1fr;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid var(--line)}.news-item time{font:700 .72rem monospace;color:var(--blue);text-transform:uppercase}.news-item p{margin:0}.news-item strong{color:var(--navy)}
+    .contact{margin-top:4rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;background:var(--sky);border-left:4px solid var(--blue);padding:2rem}.contact h3{margin-bottom:.35rem}.contact p{margin:0;color:var(--muted)}
+    footer{padding:1.8rem 0;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}.footer-row{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    @media(max-width:900px){.menu{display:block}.navlinks{display:none;position:absolute;top:64px;left:1rem;right:1rem;flex-direction:column;align-items:stretch;padding:1rem;background:#fff;border:1px solid var(--line);box-shadow:0 15px 35px rgba(16,38,63,.12)}.navlinks.open{display:flex}.hero-grid,.about-grid,.head-row,.publication-grid,.join-grid,.news-grid{grid-template-columns:1fr;gap:3rem}.about-intro{position:static}.signal-model{max-width:560px;width:100%;min-height:400px}.research-item{grid-template-columns:50px 1fr}.research-item .discipline{grid-column:2;text-align:left}.identity{grid-template-columns:repeat(2,1fr)}.identity div:nth-child(2){border-right:0}.identity div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+    @media(max-width:600px){.section{padding:4.5rem 0}.hero{min-height:auto;padding:4rem 0}.method-grid,.opportunities{grid-template-columns:1fr}.research-item{grid-template-columns:1fr;gap:.6rem}.research-item .discipline{grid-column:1}.identity{grid-template-columns:1fr}.identity div{border-right:0;border-bottom:1px solid var(--line)}.contact{grid-template-columns:1fr}.news-item{grid-template-columns:1fr}.hero h1{font-size:3.3rem}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <nav class="wrap" aria-label="Primary navigation">
+      <a class="brand" href="#top">Jiyeong Kim, PhD<small>Patient-Centered AI</small></a>
+      <button class="menu" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+      <div class="navlinks" id="navlinks">
+        <a href="#about">About</a><a href="#research">Research</a><a href="#publications">Publications</a><a href="#join">Join</a><a href="#news">News</a><a class="contact-link" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="label">Clinical informatics × data science × patient experience</p>
+          <h1>Patient signals.<br><span>Better decisions.</span></h1>
+          <p class="hero-copy">Developing patient-centered AI that models evolving health and behavior from multimodal patient-reported signals to improve clinical decision-making.</p>
+          <div class="actions"><a class="btn primary" href="#research">View research →</a><a class="btn" href="#join">Prospective researchers</a></div>
+        </div>
+        <aside class="signal-model" aria-label="Research model">
+          <div class="signal-head"><b>Research system</b><span class="live">PATIENT-CENTERED</span></div>
+          <div class="signal-flow">
+            <div class="node"><i>01</i><div><b>Capture</b><span>Language · audio · behavior · context</span></div></div><div class="flow-arrow">↓</div>
+            <div class="node"><i>02</i><div><b>Model</b><span>Patterns · trajectories · changing states</span></div></div><div class="flow-arrow">↓</div>
+            <div class="node"><i>03</i><div><b>Translate</b><span>Surveillance · communication · decisions</span></div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="identity-strip"><div class="wrap identity"><div>Patient-reported signals</div><div>Multimodal data</div><div>Longitudinal modeling</div><div>Clinical decision support</div></div></div>
+
+    <section class="section" id="about">
+      <div class="wrap about-grid">
+        <div class="about-intro"><p class="label">Research vision</p><h2>Care informed by lived experience.</h2></div>
+        <div>
+          <p class="big-statement">I study what patients report between clinical encounters—and how those signals can help us recognize changing health earlier.</p>
+          <div class="bodycopy"><p>My research develops patient-centered AI that transforms symptoms, concerns, treatment experiences, and behaviors into actionable information for earlier detection and personalized care. I combine large language models, natural language processing, and longitudinal machine learning across patient messages, clinical conversations, audio, and emerging data sources.</p><p>The goal is not simply to predict an outcome. It is to understand how health evolves over time, communicate risk meaningfully, and support decisions that reflect each patient’s needs, preferences, and daily experience.</p></div>
+          <div class="method-grid">
+            <div class="method"><span class="num">01 / IDENTIFY</span><b>Patient priorities</b><span>Capture symptoms, concerns, barriers, and treatment experiences.</span></div>
+            <div class="method"><span class="num">02 / DISCOVER</span><b>Changing risk</b><span>Model persistence, co-occurrence, escalation, and trajectories.</span></div>
+            <div class="method"><span class="num">03 / SUPPORT</span><b>Clinical decisions</b><span>Translate evidence into understandable, useful action.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section research" id="research">
+      <div class="wrap">
+        <div class="head-row"><div><p class="label">Research portfolio</p><h2>From observation to action.</h2></div><p class="lead">A connected program spanning concern identification, longitudinal surveillance, early detection, and individualized decision support.</p></div>
+        <div class="research-list">
+          <article class="research-item"><span class="index">01</span><div><h3>Earlier recognition of depression</h3><p>Using patient-reported signals, large language models, and longitudinal data to identify emerging depression risk and evaluate clinically responsible surveillance strategies.</p></div><span class="discipline">Mental health<br>Cardiometabolic care</span></article>
+          <article class="research-item"><span class="index">02</span><div><h3>Stroke signals and patient action</h3><p>Characterizing symptom timing and escalation before stroke, then translating risk patterns into understandable patient-facing guidance.</p></div><span class="discipline">Neurology<br>Risk translation</span></article>
+          <article class="research-item"><span class="index">03</span><div><h3>Evolving symptoms before colorectal cancer</h3><p>Studying how symptoms persist, co-occur, and transition before diagnosis to inform more personalized early-detection strategies.</p></div><span class="discipline">Cancer<br>Early detection</span></article>
+          <article class="research-item"><span class="index">04</span><div><h3>Dynamic models for personalized decisions</h3><p>Integrating patient-reported, clinical, and multimodal data to represent changing health states and compare alternative screening, monitoring, and treatment strategies.</p></div><span class="discipline">Multimodal AI<br>Future care</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="publications">
+      <div class="wrap publication-grid">
+        <div><p class="label">Publications & scholarship</p><h2>Selected work.</h2><p class="lead">Highlighted research advancing patient-centered AI, clinical communication, and responsible decision support.</p><div class="pub-links"><a class="btn primary" href="https://scholar.google.com/citations?view_op=search_authors&amp;mauthors=Jiyeong+Kim+Stanford" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a><a class="btn" href="https://profiles.stanford.edu/jiyeong-kim" target="_blank" rel="noopener noreferrer">Stanford Profile ↗</a></div></div>
+        <div class="pub-list" aria-label="Five highlighted publications">
+          <article class="pub"><small>JAMA Oncology · 2025</small><a href="https://doi.org/10.1001/jamaoncol.2025.0694" target="_blank" rel="noopener noreferrer">Patient-Centered Research Through Artificial Intelligence to Identify Priorities in Cancer Care</a><p>Kim J, Chen ML, Rezaei SJ, et al.</p></article>
+          <article class="pub"><small>npj Digital Medicine · 2025</small><a href="https://doi.org/10.1038/s41746-025-01969-5" target="_blank" rel="noopener noreferrer">Optimizing Large Language Models for Detecting Symptoms of Depression/Anxiety in Chronic Diseases Patient Communications</a><p>Kim J, Ma SP, Chen ML, et al.</p></article>
+          <article class="pub"><small>npj Digital Medicine · 2025</small><a href="https://doi.org/10.1038/s41746-025-01604-3" target="_blank" rel="noopener noreferrer">Artificial Intelligence Tools in Supporting Healthcare Professionals for Tailored Patient Care</a><p>Kim J, Chen ML, Rezaei SJ, et al.</p></article>
+          <article class="pub"><small>npj Digital Medicine · 2024</small><a href="https://doi.org/10.1038/s41746-024-01181-x" target="_blank" rel="noopener noreferrer">Large Language Models Outperform Mental and Medical Health Care Professionals in Identifying Obsessive-Compulsive Disorder</a><p>Kim J, Leonte KG, Chen ML, et al.</p></article>
+          <article class="pub"><small>JAMA Network Open · 2024</small><a href="https://doi.org/10.1001/jamanetworkopen.2024.38535" target="_blank" rel="noopener noreferrer">Perspectives on Artificial Intelligence-Generated Responses to Patient Messages</a><p>Kim J, Chen ML, Rezaei SJ, et al.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section join" id="join">
+      <div class="wrap join-grid">
+        <div><p class="label">Prospective students & researchers</p><h2>Build patient-centered AI with us.</h2><p class="lead">I welcome trainees who are curious about how patient experience, clinical data, and computational methods can come together to improve care.</p><div class="actions"><a class="btn" href="#contact">Start a conversation</a></div></div>
+        <div class="opportunities"><article class="opportunity"><span class="op-num">01 / STUDENTS</span><h3>Student researchers</h3><p>PhD, master’s, and undergraduate students can contribute to NLP, longitudinal modeling, multimodal AI, clinical informatics, data analysis, and research communication.</p></article><article class="opportunity"><span class="op-num">02 / FELLOWS</span><h3>Postdoctoral research fellows</h3><p>Lead interdisciplinary studies, develop independent directions, and translate computational advances into meaningful, patient-centered research.</p></article></div>
+      </div>
+    </section>
+
+    <section class="section" id="news">
+      <div class="wrap news-grid"><div><p class="label">News</p><h2>Updates.</h2><p class="lead">Research-group news, collaborations, presentations, publications, and recruiting.</p></div><div class="news-list"><article class="news-item"><time datetime="2026">2026</time><p><strong>Research group launch.</strong> Building a new program in patient-centered AI and longitudinal clinical informatics.</p></article><article class="news-item"><time datetime="2026">2026</time><p><strong>Recruiting interest.</strong> Prospective student researchers and postdoctoral research fellows are encouraged to connect.</p></article><article class="news-item"><time datetime="2026">Add date</time><p><strong>Add your latest update.</strong> Conference presentations, awards, publications, and project milestones can appear here.</p></article></div></div>
+      <div class="wrap" id="contact"><div class="contact"><div><h3>Interested in research or collaboration?</h3><p>Share your background, interests, and what you hope to explore.</p></div><a class="btn primary" href="mailto:your.email@institution.edu">your.email@institution.edu</a></div></div>
+    </section>
+  </main>
+
+  <footer><div class="wrap footer-row"><span>© <span id="year">2026</span> Jiyeong Kim. All rights reserved.</span><span>Patient-centered AI · Multimodal health data · Clinical decisions</span></div></footer>
+  <script>
+    const button=document.querySelector('.menu'),links=document.querySelector('#navlinks');
+    button.addEventListener('click',()=>{const open=links.classList.toggle('open');button.setAttribute('aria-expanded',String(open))});
+    links.addEventListener('click',e=>{if(e.target.matches('a')){links.classList.remove('open');button.setAttribute('aria-expanded','false')}});
+    document.querySelector('#year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
